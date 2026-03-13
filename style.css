@@ -17,52 +17,65 @@ body{
 
 .container{
   width: 100%;
-  max-width: 500px;
-  background: #020617;
+  max-width: 540px;
+  background: rgba(2, 6, 23, 0.95);
   padding: 30px;
-  border-radius: 16px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+  border-radius: 18px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.45);
   text-align: center;
 }
 
 h1{
   margin-bottom: 8px;
-  font-size: 28px;
+  font-size: 30px;
 }
 
 .subtitle{
   color: #94a3b8;
   margin-bottom: 20px;
+  line-height: 1.5;
 }
 
 .search-box{
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 12px;
 }
 
 input{
-  padding: 12px;
+  padding: 14px;
   border: none;
-  border-radius: 8px;
+  border-radius: 10px;
   outline: none;
   font-size: 16px;
 }
 
+.buttons{
+  display: flex;
+  gap: 10px;
+}
+
 button{
+  flex: 1;
   padding: 12px;
   border: none;
-  border-radius: 8px;
+  border-radius: 10px;
   background: #38bdf8;
   color: #0f172a;
   font-weight: bold;
   font-size: 16px;
   cursor: pointer;
-  transition: 0.3s;
+  transition: transform 0.2s, opacity 0.2s;
 }
 
 button:hover{
-  background: #0ea5e9;
+  transform: translateY(-2px);
+  opacity: 0.95;
+}
+
+.clear-btn{
+  background: #334155;
+  color: white;
 }
 
 .loading{
@@ -79,8 +92,20 @@ button:hover{
 .card{
   background: #0f172a;
   border: 1px solid #1e293b;
-  border-radius: 14px;
-  padding: 20px;
+  border-radius: 16px;
+  padding: 22px;
+  animation: aparecer 0.4s ease;
+}
+
+@keyframes aparecer{
+  from{
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to{
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .avatar{
@@ -112,6 +137,16 @@ button:hover{
   text-align: center;
 }
 
+.extra-info{
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 18px;
+  color: #94a3b8;
+  font-size: 14px;
+}
+
 .info{
   display: flex;
   justify-content: space-between;
@@ -124,8 +159,8 @@ button:hover{
   flex: 1;
   min-width: 90px;
   background: #1e293b;
-  padding: 10px;
-  border-radius: 10px;
+  padding: 12px;
+  border-radius: 12px;
   text-align: center;
 }
 
@@ -145,12 +180,6 @@ button:hover{
   padding: 10px 16px;
   border-radius: 8px;
   font-weight: bold;
-  transition: 0.3s;
-  text-align: center;
-}
-
-.profile-link:hover{
-  background: #16a34a;
 }
 
 .link-wrapper{
@@ -165,6 +194,14 @@ button:hover{
   text-align: center;
 }
 
+.message{
+  background: #1e293b;
+  color: #cbd5e1;
+  padding: 14px;
+  border-radius: 10px;
+  text-align: center;
+}
+
 .repos-title{
   margin: 25px 0 15px;
   font-size: 20px;
@@ -174,7 +211,7 @@ button:hover{
 
 .repo{
   background: #1e293b;
-  border-radius: 10px;
+  border-radius: 12px;
   padding: 14px;
   margin-bottom: 12px;
 }
@@ -207,4 +244,14 @@ button:hover{
   flex-wrap: wrap;
   font-size: 13px;
   color: #94a3b8;
+}
+
+@media (max-width: 600px){
+  .buttons{
+    flex-direction: column;
+  }
+
+  .info{
+    flex-direction: column;
+  }
 }

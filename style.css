@@ -17,7 +17,7 @@ body{
 
 .container{
   width: 100%;
-  max-width: 420px;
+  max-width: 500px;
   background: #020617;
   padding: 30px;
   border-radius: 16px;
@@ -73,6 +73,7 @@ button:hover{
 
 .result{
   margin-top: 20px;
+  text-align: left;
 }
 
 .card{
@@ -87,24 +88,28 @@ button:hover{
   height: 120px;
   border-radius: 50%;
   object-fit: cover;
-  margin-bottom: 15px;
+  display: block;
+  margin: 0 auto 15px;
   border: 3px solid #38bdf8;
 }
 
 .name{
   font-size: 22px;
   margin-bottom: 5px;
+  text-align: center;
 }
 
 .login{
   color: #38bdf8;
   margin-bottom: 10px;
+  text-align: center;
 }
 
 .bio{
   color: #cbd5e1;
   margin-bottom: 15px;
   line-height: 1.5;
+  text-align: center;
 }
 
 .info{
@@ -121,6 +126,7 @@ button:hover{
   background: #1e293b;
   padding: 10px;
   border-radius: 10px;
+  text-align: center;
 }
 
 .info-box span{
@@ -132,7 +138,7 @@ button:hover{
 
 .profile-link{
   display: inline-block;
-  margin-top: 15px;
+  margin: 15px auto 0;
   text-decoration: none;
   background: #22c55e;
   color: white;
@@ -140,10 +146,15 @@ button:hover{
   border-radius: 8px;
   font-weight: bold;
   transition: 0.3s;
+  text-align: center;
 }
 
 .profile-link:hover{
   background: #16a34a;
+}
+
+.link-wrapper{
+  text-align: center;
 }
 
 .error{
@@ -151,4 +162,49 @@ button:hover{
   padding: 12px;
   border-radius: 8px;
   color: #fecaca;
+  text-align: center;
+}
+
+.repos-title{
+  margin: 25px 0 15px;
+  font-size: 20px;
+  color: #f8fafc;
+  text-align: center;
+}
+
+.repo{
+  background: #1e293b;
+  border-radius: 10px;
+  padding: 14px;
+  margin-bottom: 12px;
+}
+
+.repo h3{
+  font-size: 16px;
+  margin-bottom: 8px;
+}
+
+.repo a{
+  color: #38bdf8;
+  text-decoration: none;
+}
+
+.repo a:hover{
+  text-decoration: underline;
+}
+
+.repo p{
+  color: #cbd5e1;
+  font-size: 14px;
+  margin-bottom: 10px;
+  line-height: 1.4;
+}
+
+.repo-info{
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+  font-size: 13px;
+  color: #94a3b8;
 }

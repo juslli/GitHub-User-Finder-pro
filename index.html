@@ -10,15 +10,22 @@
 
   <div class="container">
     <h1>GitHub User Finder</h1>
-    <p class="subtitle">Busque um perfil do GitHub</p>
+    <p class="subtitle">Busque um perfil do GitHub e veja os dados principais</p>
 
     <div class="search-box">
       <input type="text" id="username" placeholder="Digite o username">
-      <button id="searchBtn">Buscar</button>
+      <div class="buttons">
+        <button id="searchBtn">Buscar</button>
+        <button id="clearBtn" class="clear-btn">Limpar</button>
+      </div>
     </div>
 
     <p id="loading" class="loading"></p>
-    <div id="result" class="result"></div>
+    <div id="result" class="result">
+      <div class="message">
+        Digite um username para buscar um perfil.
+      </div>
+    </div>
   </div>
 
   <script src="script.js"></script>

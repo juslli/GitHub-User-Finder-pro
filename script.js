@@ -4,6 +4,7 @@ const result = document.getElementById("result");
 const loading = document.getElementById("loading");
 
 searchBtn.addEventListener("click", buscarUsuario);
+
 usernameInput.addEventListener("keydown", function(event){
   if(event.key === "Enter"){
     buscarUsuario();
@@ -24,46 +25,75 @@ async function buscarUsuario(){
   loading.innerText = "Buscando usuário...";
 
   try{
-    const resposta = await fetch(`https://api.github.com/users/${username}`);
+    const respostaUsuario = await fetch(`https://api.github.com/users/${username}`);
 
-    if(!resposta.ok){
-      throw new Error("Usuário não encontrado");
+    if(!respostaUsuario.ok){
+      throw new Error("Usuário não encontrado.");
     }
 
-    const dados = await resposta.json();
+    const dadosUsuario = await respostaUsuario.json();
+
+    const respostaRepos = await fetch(`https://api.github.com/users/${username}/repos?sort=updated&per_page=5`);
+    const dadosRepos = await respostaRepos.json();
 
     loading.innerText = "";
 
+    let reposHTML = "";
+
+    if(dadosRepos.length > 0){
+      reposHTML = `
+        <h3 class="repos-title">Últimos Repositórios</h3>
+        ${dadosRepos.map(repo => `
+          <div class="repo">
+            <h3>
+              <a href="${repo.html_url}" target="_blank">${repo.name}</a>
+            </h3>
+            <p>${repo.description ? repo.description : "Sem descrição."}</p>
+            <div class="repo-info">
+              <span>⭐ ${repo.stargazers_count}</span>
+              <span>🍴 ${repo.forks_count}</span>
+              <span>${repo.language ? repo.language : "Sem linguagem"}</span>
+            </div>
+          </div>
+        `).join("")}
+      `;
+    } else {
+      reposHTML = `<p class="repos-title">Esse usuário não possui repositórios públicos.</p>`;
+    }
+
     result.innerHTML = `
       <div class="card">
-        <img class="avatar" src="${dados.avatar_url}" alt="Foto de ${dados.login}">
-        <h2 class="name">${dados.name ? dados.name : "Sem nome disponível"}</h2>
-        <p class="login">@${dados.login}</p>
-        <p class="bio">${dados.bio ? dados.bio : "Este usuário não possui bio."}</p>
+        <img class="avatar" src="${dadosUsuario.avatar_url}" alt="Foto de ${dadosUsuario.login}">
+        <h2 class="name">${dadosUsuario.name ? dadosUsuario.name : "Sem nome disponível"}</h2>
+        <p class="login">@${dadosUsuario.login}</p>
+        <p class="bio">${dadosUsuario.bio ? dadosUsuario.bio : "Este usuário não possui bio."}</p>
 
         <div class="info">
           <div class="info-box">
-            <span>${dados.followers}</span>
+            <span>${dadosUsuario.followers}</span>
             Seguidores
           </div>
 
           <div class="info-box">
-            <span>${dados.following}</span>
+            <span>${dadosUsuario.following}</span>
             Seguindo
           </div>
 
           <div class="info-box">
-            <span>${dados.public_repos}</span>
+            <span>${dadosUsuario.public_repos}</span>
             Repositórios
           </div>
         </div>
 
-        <a class="profile-link" href="${dados.html_url}" target="_blank">
-          Ver perfil no GitHub
-        </a>
+        <div class="link-wrapper">
+          <a class="profile-link" href="${dadosUsuario.html_url}" target="_blank">Ver perfil no GitHub</a>
+        </div>
+
+        ${reposHTML}
       </div>
     `;
-  }catch(error){
+
+  } catch(error){
     loading.innerText = "";
     result.innerHTML = `<div class="error">${error.message}</div>`;
   }

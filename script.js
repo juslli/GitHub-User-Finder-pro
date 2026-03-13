@@ -1,15 +1,28 @@
 const searchBtn = document.getElementById("searchBtn");
+const clearBtn = document.getElementById("clearBtn");
 const usernameInput = document.getElementById("username");
 const result = document.getElementById("result");
 const loading = document.getElementById("loading");
 
 searchBtn.addEventListener("click", buscarUsuario);
+clearBtn.addEventListener("click", limparBusca);
 
 usernameInput.addEventListener("keydown", function(event){
   if(event.key === "Enter"){
     buscarUsuario();
   }
 });
+
+function limparBusca(){
+  usernameInput.value = "";
+  loading.innerText = "";
+  result.innerHTML = `
+    <div class="message">
+      Digite um username para buscar um perfil.
+    </div>
+  `;
+  usernameInput.focus();
+}
 
 async function buscarUsuario(){
   const username = usernameInput.value.trim();
@@ -68,6 +81,11 @@ async function buscarUsuario(){
         <p class="login">@${dadosUsuario.login}</p>
         <p class="bio">${dadosUsuario.bio ? dadosUsuario.bio : "Este usuário não possui bio."}</p>
 
+        <div class="extra-info">
+          <span>📍 ${dadosUsuario.location ? dadosUsuario.location : "Localização não informada"}</span>
+          <span>🏢 ${dadosUsuario.company ? dadosUsuario.company : "Empresa não informada"}</span>
+        </div>
+
         <div class="info">
           <div class="info-box">
             <span>${dadosUsuario.followers}</span>
@@ -92,7 +110,6 @@ async function buscarUsuario(){
         ${reposHTML}
       </div>
     `;
-
   } catch(error){
     loading.innerText = "";
     result.innerHTML = `<div class="error">${error.message}</div>`;

@@ -1,0 +1,154 @@
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #0f172a, #1e293b);
+  color: white;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.container{
+  width: 100%;
+  max-width: 420px;
+  background: #020617;
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+  text-align: center;
+}
+
+h1{
+  margin-bottom: 8px;
+  font-size: 28px;
+}
+
+.subtitle{
+  color: #94a3b8;
+  margin-bottom: 20px;
+}
+
+.search-box{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+input{
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  outline: none;
+  font-size: 16px;
+}
+
+button{
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  background: #38bdf8;
+  color: #0f172a;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover{
+  background: #0ea5e9;
+}
+
+.loading{
+  margin-top: 15px;
+  color: #facc15;
+  min-height: 20px;
+}
+
+.result{
+  margin-top: 20px;
+}
+
+.card{
+  background: #0f172a;
+  border: 1px solid #1e293b;
+  border-radius: 14px;
+  padding: 20px;
+}
+
+.avatar{
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 15px;
+  border: 3px solid #38bdf8;
+}
+
+.name{
+  font-size: 22px;
+  margin-bottom: 5px;
+}
+
+.login{
+  color: #38bdf8;
+  margin-bottom: 10px;
+}
+
+.bio{
+  color: #cbd5e1;
+  margin-bottom: 15px;
+  line-height: 1.5;
+}
+
+.info{
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin: 15px 0;
+  flex-wrap: wrap;
+}
+
+.info-box{
+  flex: 1;
+  min-width: 90px;
+  background: #1e293b;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.info-box span{
+  display: block;
+  font-size: 18px;
+  font-weight: bold;
+  color: #38bdf8;
+}
+
+.profile-link{
+  display: inline-block;
+  margin-top: 15px;
+  text-decoration: none;
+  background: #22c55e;
+  color: white;
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.profile-link:hover{
+  background: #16a34a;
+}
+
+.error{
+  background: #7f1d1d;
+  padding: 12px;
+  border-radius: 8px;
+  color: #fecaca;
+}
